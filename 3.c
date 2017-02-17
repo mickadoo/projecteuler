@@ -1,8 +1,5 @@
 #include <stdio.h>
-#include <limits.h>
-#include <math.h>
-
-int is_prime(int num);
+#include "primes.h"
 
 /**
  * The prime factors of 13195 are 5,  7,  13 and 29.
@@ -10,6 +7,8 @@ int is_prime(int num);
  */
 int main()
 {
+	int is_prime(int num);
+
 	long int orig = 600851475143;
 	long int check_limit = sqrt(orig); // only check up to sqrt of check_limit
 	int current = 2; // first prime
@@ -28,24 +27,4 @@ int main()
 	printf("%d\n", max);
 
 	return 0;
-}
-
-/**
- * only works if called sequentially for each number in range
- * from zero
- */
-int is_prime(int num)
-{
-	static int primes[INT_MAX] = {'\0'};
-	int target = sqrt(num);
-	int i = -1;	
-
-	while (primes[++i] != '\0' && primes[i] < target) 
-		if (num % primes[i] == 0)
-			return 0;
-	
-	primes[i] = num;
-	primes[i + 1] = '\0';
-
-	return 1;
 }
